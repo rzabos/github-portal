@@ -1,0 +1,33 @@
+<div class="row">
+  <mat-form-field class="col">
+    <mat-label>Username</mat-label>
+    <input type="text" matInput [formControl]="form.controls.username">
+    <mat-error *ngIf="form.controls.username.hasError('minlength')">
+      Text cannot be shorter than <strong>3</strong> characters!
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="col">
+    <mat-label>Organization</mat-label>
+    <input type="text" matInput [formControl]="form.controls.organization">
+    <mat-error *ngIf="form.controls.organization.hasError('minlength')">
+      Text cannot be shorter than <strong>3</strong> characters!
+    </mat-error>
+  </mat-form-field>
+</div>
+
+<div class="row">
+  <app-chips class="col" label="Languages" [chips]="form.controls.languages"></app-chips>
+  <app-chips class="col" label="Topics" [chips]="form.controls.topics"></app-chips>
+</div>
+
+<div class="row">
+  <app-range label="Stars" [form]="form.controls.stars"></app-range>
+</div>
+
+<div class="row">
+  <app-range label="Created" [form]="form.controls.created"></app-range>
+</div>
+
+<div class="row">
+  <app-range label="Size" [form]="form.controls.size"></app-range>
+</div>

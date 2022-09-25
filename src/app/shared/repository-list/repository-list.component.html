@@ -1,0 +1,52 @@
+<div *ngIf="response">
+  <div class="container">
+    <mat-accordion multi>
+      <mat-expansion-panel *ngFor="let repository of response.items">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="avatar">
+              <img class="avatar__image" [src]="repository.owner.avatar_url">
+            </div>
+            {{ repository.full_name }}
+          </mat-panel-title>
+          <mat-panel-description>
+            Updated: {{ repository.updated_at | toDate | timeAgo }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="row justify-content-md-center">
+          <div class="col">
+            <mat-icon>star_border</mat-icon>
+            <span class="aligned-with-icon"><strong>{{ repository.stargazers_count }}</strong> stars</span>
+          </div>
+          <div class="col">
+            <mat-icon>remove_red_eye</mat-icon>
+            <span class="aligned-with-icon"><strong>{{ repository.watchers_count }}</strong> watchers</span>
+          </div>
+          <div class="col">
+            <mat-icon>usb</mat-icon>
+            <span class="aligned-with-icon"><strong>{{ repository.forks_count }}</strong> forks</span>
+          </div>
+          <div class="col">
+            <mat-icon>broken_image</mat-icon>
+            <span class="aligned-with-icon"><strong>{{ repository.open_issues_count }}</strong> issues</span>
+          </div>
+          <div class="col">
+            <mat-icon>calendar_today</mat-icon>
+            <span class="aligned-with-icon">{{ repository.created_at | toDate | timeAgo }}</span>
+          </div>
+        </div>
+        <mat-action-row>
+          <mat-chip-list>
+            <mat-chip *ngFor="let language of (repository.languages_url | getLanguages | async)">{{ language }}</mat-chip>
+          </mat-chip-list>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-paginator
+      [pageSize]="10"
+      [length]="response.total_pages"
+      [pageIndex]="currentPage"
+      (page)="paginate.emit($event.pageIndex)">
+    </mat-paginator>
+  </div>
+</div>

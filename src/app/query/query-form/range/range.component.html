@@ -1,0 +1,21 @@
+<div class="row">
+  <mat-form-field class="col-4">
+    <mat-label>First value</mat-label>
+    <input type="text" matInput [formControl]="form.controls.value">
+  </mat-form-field>
+  <mat-form-field class="col-4">
+    <mat-label>{{ label }}</mat-label>
+    <mat-select [formControl]="form.controls.comparer">
+      <mat-option value="">Equal</mat-option>
+      <mat-option value=">">Greater than</mat-option>
+      <mat-option value="<">Less then</mat-option>
+      <mat-option value=">=">Equal or greater than</mat-option>
+      <mat-option value="<=">Equal or lower than</mat-option>
+      <mat-option value="..">Between</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-4" *ngIf="displayOtherValue$ | async">
+    <mat-label>Other value</mat-label>
+    <input type="text" matInput [formControl]="form.controls.otherValue">
+  </mat-form-field>
+</div>

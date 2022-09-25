@@ -1,0 +1,25 @@
+.container {
+  margin-top: 1rem;
+}
+
+.avatar {
+  margin-right: 0.7rem;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar__image {
+  width: 100%;
+}
+
+.mat-action-row {
+  justify-content: flex-start;
+}
+
+.aligned-with-icon {
+  position: absolute;
+  margin-top: 3px;
+  margin-left: 5px;
+}

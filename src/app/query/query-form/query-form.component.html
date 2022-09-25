@@ -1,0 +1,36 @@
+
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-card>
+      <div class="row align-items-center justify-content-center">
+        <mat-form-field class="col-4">
+          <mat-label>Search by</mat-label>
+          <input type="text" matInput [formControl]="form.controls.text" [errorStateMatcher]="matcher">
+          <mat-error *ngIf="form.controls.text.hasError('required')">
+            Text is required!
+          </mat-error>
+          <mat-error *ngIf="form.controls.text.hasError('minlength')">
+            Text cannot be shorter than <strong>3</strong> characters!
+          </mat-error>
+        </mat-form-field>
+        <section class="col-5 text-center">
+          <mat-checkbox class="checkbox-margin" [formControl]="form.controls.in.controls.name">name</mat-checkbox>
+          <mat-checkbox class="checkbox-margin" [formControl]="form.controls.in.controls.description">description</mat-checkbox>
+          <mat-checkbox class="checkbox-margin" [formControl]="form.controls.in.controls.readme">readme</mat-checkbox>
+        </section>
+        <div class="col-3 text-center">
+          <button mat-raised-button color="primary">Submit</button>
+          <button type="button" mat-button (click)="resetResults.emit()">Reset</button>
+        </div>
+      </div>
+      <div [hidden]="isAdvancedQuery === false">
+        <app-advanced-form [form]="form.controls.advanced"></app-advanced-form>
+      </div>
+      <div class="row justify-content-center">
+        <button type="button" mat-icon-button (click)="onAdvancedToggled()">
+          <mat-icon [ngClass]="isAdvancedQuery ? 'opened' : 'closed'">keyboard_arrow_down</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </form>
+</div>

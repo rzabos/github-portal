@@ -1,0 +1,18 @@
+<div>
+  <mat-toolbar class="toolbar" color="primary">
+    <div class="row row-cols-auto">
+      <div>
+        <img src="../assets/github-circle-white-transparent.svg">
+        <span>Query Portal</span>
+      </div>
+      <div>
+        <a mat-button routerLink="query" routerLinkActive="active" class="hover">Query</a>
+        <a mat-button routerLink="history" routerLinkActive="active" class="hover">History</a>
+      </div>
+    </div>
+  </mat-toolbar>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

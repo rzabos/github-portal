@@ -1,0 +1,14 @@
+<div class="row">
+  <mat-form-field class="col">
+    <mat-label>{{ label }}</mat-label>
+    <mat-chip-list #languageList multiple>
+      <mat-chip *ngFor="let chip of chips.controls; let i = index" (removed)="chips.removeAt(i)">
+        {{chip.value}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input [matChipInputFor]="languageList" (matChipInputTokenEnd)="addChip($event)">
+    </mat-chip-list>
+  </mat-form-field>
+</div>

@@ -1,0 +1,21 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened>
+    <mat-selection-list #history [multiple]="false" (selectionChange)="onSelectionChange($event)">
+      <mat-list-option *ngFor="let query of history$ | async" [value]="query">
+        <div class="col">
+          {{ query.text }}
+        </div>
+        <div class="col">
+          {{ query.in?.name ? "igen" : "nem" }}
+        </div>
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-repository-list
+      [response]="response$ | async"
+      [currentPage]="(currentPage$ | async) ?? 0"
+      (paginate)="onPagination($event)">
+  </app-repository-list>
+  </mat-sidenav-content>
+</mat-sidenav-container>

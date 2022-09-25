@@ -1,0 +1,18 @@
+<div>
+  <mat-progress-bar
+    [ngClass]="{ invisible: (isLoading$ | async) === false }"
+    mode="indeterminate"
+    color="accent">
+  </mat-progress-bar>
+  <app-query-form
+    [isAdvancedQuery]="isAdvancedQuery$ | async"
+    (resetResults)="onResetResults()"
+    (submitQuery)="onSubmitQuery($event)"
+    (toggleAdvancedQuery)="onToggleAdvancedQuery()">
+  </app-query-form>
+  <app-repository-list
+    [response]="response$ | async"
+    [currentPage]="(currentPage$ | async) ?? 0"
+    (paginate)="onPagination($event)">
+  </app-repository-list>
+</div>

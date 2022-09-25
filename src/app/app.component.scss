@@ -1,0 +1,27 @@
+.toolbar {
+  position: sticky;
+  height: 50px;
+}
+
+.content {
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  overflow-y: scroll;
+}
+
+.active {
+  background: rgb(50, 65, 145);
+}
+
+.hover:hover {
+  background-color: rgb(39, 50, 113);
+  color: white;
+}
+
+img {
+  margin-right: 0.7rem;
+  height: 2rem;
+}
