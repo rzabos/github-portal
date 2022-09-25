@@ -8,6 +8,8 @@
   <app-repository-list
     [response]="response$ | async"
     [currentPage]="(currentPage$ | async) ?? 0"
-    (paginate)="onPagination($event)">
+    (paginate)="onPagination($event)"
+    (changeOrder)="onOrderChanged($event)"
+    (changeSort)="onSortChanged($event)">
   </app-repository-list>
 </div>

@@ -20,12 +20,14 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <app-repository-list
-      *ngIf="response$ | async; else asd"
+      *ngIf="response$ | async; else noSelection"
       [response]="response$ | async"
       [currentPage]="(currentPage$ | async) ?? 0"
-      (paginate)="onPagination($event)">
+      (paginate)="onPagination($event)"
+      (changeOrder)="onOrderChanged($event)"
+      (changeSort)="onSortChanged($event)">
     </app-repository-list>
-    <ng-template #asd>
+    <ng-template #noSelection>
       <mat-card>
         <h1>No query has been selected!</h1>
         <h4>Select a query first.</h4>

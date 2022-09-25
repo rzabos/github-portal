@@ -10,3 +10,13 @@ export const changePage = createAction(
   "[History Page] Change Page",
   props<{ page: number }>()
 );
+
+export const changeOrder = createAction(
+  "[History Page] Change Order",
+  props<{ order: string }>()
+);
+
+export const changeSort = createAction(
+  "[History Page] Change Sort",
+  props<{ sort: string }>()
+);

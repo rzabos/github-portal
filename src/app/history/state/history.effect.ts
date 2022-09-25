@@ -12,14 +12,24 @@ import { HistoryApiActions, HistoryPageActions } from "./actions";
 export class HistoryEffects {
   public loading$ = createEffect(() => {
     return this._actions$.pipe(
-      ofType(HistoryPageActions.loadHistory, HistoryPageActions.changePage),
+      ofType(
+        HistoryPageActions.loadHistory,
+        HistoryPageActions.changePage,
+        HistoryPageActions.changeSort,
+        HistoryPageActions.changeOrder
+      ),
       switchMap(() => of(AppPageActions.loading()))
     );
   });
 
   public load$ = createEffect(() => {
     return this._actions$.pipe(
-      ofType(HistoryPageActions.loadHistory, HistoryPageActions.changePage),
+      ofType(
+        HistoryPageActions.loadHistory,
+        HistoryPageActions.changePage,
+        HistoryPageActions.changeSort,
+        HistoryPageActions.changeOrder
+      ),
       concatLatestFrom(() => [
         this.store.select(selectQuery),
         this.store.select(selectCurrentPage),

@@ -25,4 +25,12 @@ export class HistoryComponent {
   public onPagination(page: number): void {
     this.store.dispatch(HistoryPageActions.changePage({ page }));
   }
+
+  public onOrderChanged(order: string): void {
+    this.store.dispatch(HistoryPageActions.changeOrder({ order }));
+  }
+
+  public onSortChanged(sort: string): void {
+    this.store.dispatch(HistoryPageActions.changeSort({ sort }));
+  }
 }

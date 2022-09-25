@@ -3,13 +3,10 @@ import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatInputModule } from "@angular/material/input";
-import { MatCardModule } from "@angular/material/card";
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { selectorKey } from "./state";
 import { queryReducer } from "./state/query.reducer";
-import { MatIconModule } from "@angular/material/icon";
-import { MatRadioModule } from "@angular/material/radio";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSliderModule } from "@angular/material/slider";
@@ -29,13 +26,9 @@ import { MatNativeDateModule } from "@angular/material/core";
   imports: [
     CommonModule,
     SharedModule,
-    ReactiveFormsModule,
     QueryRoutingModule,
     MatCheckboxModule,
     MatInputModule,
-    MatCardModule,
-    MatIconModule,
-    MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,

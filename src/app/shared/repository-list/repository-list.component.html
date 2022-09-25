@@ -1,5 +1,24 @@
 <div *ngIf="response">
   <div class="container">
+    <mat-card>
+      <div class="row">
+        <div class="col">
+          <label id="sort"><strong>Sort by</strong></label>
+          <mat-radio-group aria-labelledby="sort" [formControl]="sort">
+            <mat-radio-button value="">Default</mat-radio-button>
+            <mat-radio-button value="stars">Stars</mat-radio-button>
+            <mat-radio-button value="forks">Forks</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="col">
+          <label id="order"><strong>Order by</strong></label>
+          <mat-radio-group aria-labelledby="order" [formControl]="order">
+            <mat-radio-button value="desc">Desc</mat-radio-button>
+            <mat-radio-button value="asc">Asc</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+    </mat-card>
     <mat-accordion multi>
       <mat-expansion-panel *ngFor="let repository of response.items">
         <mat-expansion-panel-header>
@@ -43,8 +62,9 @@
       </mat-expansion-panel>
     </mat-accordion>
     <mat-paginator
+      [length]="response.total_count"
       [pageSize]="10"
-      [length]="response.total_pages"
+      [pageSizeOptions]="[10]"
       [pageIndex]="currentPage"
       (page)="paginate.emit($event.pageIndex)">
     </mat-paginator>

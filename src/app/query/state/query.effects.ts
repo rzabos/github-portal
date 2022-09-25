@@ -26,7 +26,11 @@ export class QueryEffects {
 
   public changePage$ = createEffect(() => {
     return this._actions$.pipe(
-      ofType(QueryPageActions.changePage),
+      ofType(
+        QueryPageActions.changePage,
+        QueryPageActions.changeSort,
+        QueryPageActions.changeOrder
+      ),
       concatLatestFrom(() => this.store.select(selectQuery)),
       switchMap(([_, query]) => {
         if (!query) {
@@ -40,7 +44,12 @@ export class QueryEffects {
 
   public loadRepositories$ = createEffect(() => {
     return this._actions$.pipe(
-      ofType(QueryPageActions.loadRepositories, QueryPageActions.changePage),
+      ofType(
+        QueryPageActions.loadRepositories,
+        QueryPageActions.changePage,
+        QueryPageActions.changeSort,
+        QueryPageActions.changeOrder
+      ),
       concatLatestFrom(() => [
         this.store.select(selectQuery),
         this.store.select(selectCurrentPage),

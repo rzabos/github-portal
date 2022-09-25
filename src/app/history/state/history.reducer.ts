@@ -28,5 +28,13 @@ export const historyReducer = createReducer<HistoryState>(
   on(HistoryPageActions.changePage, (state, action) => ({
     ...state,
     currentPage: action.page,
+  })),
+  on(HistoryPageActions.changeOrder, (state, action) => ({
+    ...state,
+    orderBy: action.order,
+  })),
+  on(HistoryPageActions.changeSort, (state, action) => ({
+    ...state,
+    sortBy: action.sort,
   }))
 );

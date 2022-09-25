@@ -8,15 +8,21 @@ import { MatChipsModule } from "@angular/material/chips";
 import { ToDatePipe } from "./to-date.pipe";
 import { GetLanguagesPipe } from "./language.pipe";
 import { NgPipesModule } from "ngx-pipes";
+import { MatCardModule } from "@angular/material/card";
+import { MatRadioModule } from "@angular/material/radio";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MatPaginatorModule,
     MatExpansionModule,
     MatIconModule,
     NgPipesModule,
     MatChipsModule,
+    MatCardModule,
+    MatRadioModule,
   ],
   exports: [
     CommonModule,
@@ -26,6 +32,8 @@ import { NgPipesModule } from "ngx-pipes";
     NgPipesModule,
     MatChipsModule,
     RepositoryListComponent,
+    MatCardModule,
+    ReactiveFormsModule,
   ],
   declarations: [RepositoryListComponent, ToDatePipe, GetLanguagesPipe],
   providers: [ToDatePipe, GetLanguagesPipe],

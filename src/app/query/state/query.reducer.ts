@@ -40,5 +40,13 @@ export const queryReducer = createReducer<QueryState>(
   on(QueryApiActions.loadRepositoriesSuccess, (state, action) => ({
     ...state,
     response: action.response,
+  })),
+  on(QueryPageActions.changeOrder, (state, action) => ({
+    ...state,
+    orderBy: action.order,
+  })),
+  on(QueryPageActions.changeSort, (state, action) => ({
+    ...state,
+    sortBy: action.sort,
   }))
 );

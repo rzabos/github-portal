@@ -19,7 +19,12 @@ export const resetRepositories = createAction(
   "[Query Page] Reset Repositories"
 );
 
-export const loadHistory = createAction(
-  "[History Page] Load History",
-  props<{ query: Query }>()
+export const changeOrder = createAction(
+  "[Query Page] Change Order",
+  props<{ order: string }>()
+);
+
+export const changeSort = createAction(
+  "[Query Page] Change Sort",
+  props<{ sort: string }>()
 );

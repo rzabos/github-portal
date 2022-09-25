@@ -31,4 +31,12 @@ export class QueryComponent {
   public onPagination(page: number): void {
     this.store.dispatch(QueryPageActions.changePage({ page }));
   }
+
+  public onOrderChanged(order: string): void {
+    this.store.dispatch(QueryPageActions.changeOrder({ order }));
+  }
+
+  public onSortChanged(sort: string): void {
+    this.store.dispatch(QueryPageActions.changeSort({ sort }));
+  }
 }

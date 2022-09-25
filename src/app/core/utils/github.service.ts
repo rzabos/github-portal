@@ -20,14 +20,14 @@ export class GitHubService {
       "application/vnd.github+json"
     );
 
-    const params = new HttpParams()
-      .append("q", request.query)
-      .append("page", request.pageNumber ? request.pageNumber + 1 : 1)
-      .append("order", request.orderBy ?? "desc")
-      .append("per_page", this.PerPage);
+    let params = new HttpParams()
+      .set("q", request.query)
+      .set("page", request.pageNumber ? request.pageNumber + 1 : 1)
+      .set("order", request.orderBy ?? "desc")
+      .set("per_page", this.PerPage);
 
     if (request.sortBy) {
-      params.append("sort", request.sortBy);
+      params = params.set("sort", request.sortBy);
     }
 
     return this.httpClient
