@@ -20,7 +20,7 @@
         </section>
         <div class="col-3 text-center">
           <button mat-raised-button color="primary">Submit</button>
-          <button type="button" mat-button (click)="resetRepositories.emit()">Reset</button>
+          <button type="button" mat-button (click)="onReset()">Reset</button>
         </div>
       </div>
       <div [hidden]="isAdvancedQuery === false">
