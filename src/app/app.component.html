@@ -1,13 +1,18 @@
-<div>
+<div class="app">
   <mat-toolbar class="toolbar" color="primary">
-    <div class="row row-cols-auto">
-      <div>
+    <div class="row">
+      <div class="col">
         <img src="../assets/github-circle-white-transparent.svg">
         <span>Query Portal</span>
       </div>
-      <div>
+      <div class="col">
         <a mat-button routerLink="query" routerLinkActive="active" class="hover">Query</a>
         <a mat-button routerLink="history" routerLinkActive="active" class="hover">History</a>
+      </div>
+      <div class="col">
+        <button mat-icon-button (click)="toggleSidebar()">
+          <mat-icon>reorder</mat-icon>
+        </button>
       </div>
     </div>
   </mat-toolbar>

@@ -6,6 +6,7 @@ export const initialState: State = {
   error: null,
   history: [],
   isLoading: false,
+  sidebar: true,
 };
 
 export const appReducer = createReducer<State>(
@@ -25,5 +26,9 @@ export const appReducer = createReducer<State>(
     ...state,
     isLoading: false,
   })),
-  on(AppPageActions.loading, (state) => ({ ...state, isLoading: true }))
+  on(AppPageActions.loading, (state) => ({ ...state, isLoading: true })),
+  on(AppPageActions.toogleSidebar, (state) => ({
+    ...state,
+    sidebar: !state.sidebar,
+  }))
 );

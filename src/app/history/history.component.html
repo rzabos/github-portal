@@ -1,20 +1,8 @@
 <mat-sidenav-container class="sidebar" *ngIf="(history$ | async)?.length; else elseBlock">
-  <mat-sidenav mode="side" opened class="scroll">
+  <mat-sidenav mode="side" class="scroll" position="end" autosize [opened]="sidebar$ | async">
     <mat-selection-list #history [multiple]="false" (selectionChange)="onSelectionChange($event)">
-      <mat-list-option *ngFor="let query of history$ | async" [value]="query">
-        <div mat-line>
-          <mat-icon>search</mat-icon>
-          Search <strong>{{ query.text }}</strong> in <strong>{{ query.in | toString }}</strong>
-        </div>
-        <div mat-line>
-          <mat-icon>account_circle</mat-icon>
-          User <strong>{{ query.advanced?.username }}</strong>
-        </div>
-        <div mat-line>
-          <mat-icon>account_balance</mat-icon>
-          Org <strong>{{ query.advanced?.organization }}</strong>
-        </div>
-        <mat-divider></mat-divider>
+      <mat-list-option *ngFor="let query of (history$ | async); let i = index" [value]="query">
+        {{ i + 1 }}. query
       </mat-list-option>
     </mat-selection-list>
   </mat-sidenav>
@@ -28,7 +16,7 @@
       (changeSort)="onSortChanged($event)">
     </app-repository-list>
     <ng-template #noSelection>
-      <mat-card>
+      <mat-card class="container text-center">
         <h1>No query has been selected!</h1>
         <h4>Select a query first.</h4>
       </mat-card>
@@ -36,7 +24,7 @@
   </mat-sidenav-content>
 </mat-sidenav-container>
 <ng-template #elseBlock>
-  <mat-card class="message">
+  <mat-card class="container text-center">
     <h1>No query has been made!</h1>
     <h4>Navigate to the query page.</h4>
     <a mat-raised-button color="primary" routerLink="query">Query Page</a>

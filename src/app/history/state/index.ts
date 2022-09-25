@@ -29,3 +29,8 @@ export const selectQuery = createSelector(
   selectHistoryState,
   (state) => state.query
 );
+
+export const selectSidebar = createSelector(
+  selectHistoryState,
+  (state) => state.sidebar
+);

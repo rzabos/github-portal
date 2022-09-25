@@ -10,6 +10,7 @@ export const initialState: HistoryState = {
   sortBy: null,
   query: null,
   response: null,
+  sidebar: true,
 };
 
 export const historyReducer = createReducer<HistoryState>(
@@ -36,5 +37,9 @@ export const historyReducer = createReducer<HistoryState>(
   on(HistoryPageActions.changeSort, (state, action) => ({
     ...state,
     sortBy: action.sort,
+  })),
+  on(HistoryPageActions.toggleSidebar, (state) => ({
+    ...state,
+    sidebar: !state.sidebar,
   }))
 );

@@ -3,6 +3,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { Store } from "@ngrx/store";
 import { Subject, takeUntil } from "rxjs";
 import { selectError, selectIsLoading } from "./state";
+import { AppPageActions } from './state/actions';
 
 @Component({
   selector: "app-root",
@@ -32,5 +33,9 @@ export class AppComponent implements OnDestroy {
   public ngOnDestroy(): void {
     this._onDestroySubject.next(null);
     this._onDestroySubject.complete();
+  }
+
+  public toggleSidebar(): void {
+    this.store.dispatch(AppPageActions.toogleSidebar())
   }
 }

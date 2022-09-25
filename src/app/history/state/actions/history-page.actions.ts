@@ -20,3 +20,5 @@ export const changeSort = createAction(
   "[History Page] Change Sort",
   props<{ sort: string }>()
 );
+
+export const toggleSidebar = createAction("[History Page] Toggle Sidebar");

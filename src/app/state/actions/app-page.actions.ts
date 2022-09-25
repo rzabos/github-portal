@@ -7,3 +7,5 @@ export const executeQuery = createAction(
 );
 
 export const loading = createAction("[App Page] Loading");
+
+export const toogleSidebar = createAction("[App Page] Toggle Sidebar");

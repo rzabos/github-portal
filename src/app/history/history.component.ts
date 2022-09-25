@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { MatSelectionListChange } from "@angular/material/list";
 import { Store } from "@ngrx/store";
-import { selectHistory } from "../state";
+import { selectHistory, selectSidebar } from "../state";
 import { selectCurrentPage, selectResponse } from "./state";
 import { HistoryPageActions } from "./state/actions";
 
@@ -14,6 +14,7 @@ export class HistoryComponent {
   public history$ = this.store.select(selectHistory);
   public response$ = this.store.select(selectResponse);
   public currentPage$ = this.store.select(selectCurrentPage);
+  public sidebar$ = this.store.select(selectSidebar);
 
   public constructor(private store: Store) {}
 

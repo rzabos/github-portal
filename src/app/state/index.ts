@@ -17,3 +17,8 @@ export const selectHistory = createSelector(
   selectAppState,
   (state) => state.history
 );
+
+export const selectSidebar = createSelector(
+  selectAppState,
+  (state) => state.sidebar
+);

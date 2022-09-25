@@ -8,4 +8,5 @@ export interface HistoryState {
   totalResults: number;
   response: GitHubResponse | null;
   query: Query | null;
+  sidebar: boolean;
 }

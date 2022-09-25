@@ -53,6 +53,12 @@
             <mat-icon>calendar_today</mat-icon>
             <span class="aligned-with-icon">{{ repository.created_at | toDate | timeAgo }}</span>
           </div>
+          <div class="col">
+            <a [href]="repository.html_url" target="_blank">
+              <mat-icon>link</mat-icon>
+            </a>
+            <span class="aligned-with-icon">Link</span>
+          </div>
         </div>
         <mat-action-row>
           <mat-chip-list>
