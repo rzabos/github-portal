@@ -14,7 +14,6 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSliderModule } from "@angular/material/slider";
 import { FormService } from "./utils/form.service";
-import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatSelectModule } from "@angular/material/select";
 import { QueryRoutingModule } from "./query-routing.module";
 import { AdvancedFormComponent } from "./query-form/advanced-form/advanced-form.component";
@@ -39,7 +38,6 @@ import { QueryEffects } from "./state/query.effects";
     MatDatepickerModule,
     MatButtonModule,
     MatSliderModule,
-    MatProgressBarModule,
     MatSelectModule,
     StoreModule.forFeature(selectorKey, queryReducer),
     EffectsModule.forFeature([QueryEffects]),

@@ -10,6 +10,9 @@ import { SharedModule } from "../shared/shared.module";
 import { HistoryRoutingModule } from "./history-routing.module";
 import { HistoryEffects } from "./state/history.effect";
 import { EffectsModule } from "@ngrx/effects";
+import { ToStringPipe } from "./in-query.pipe";
+import { MatCardModule } from "@angular/material/card";
+import { MatButtonModule } from "@angular/material/button";
 
 @NgModule({
   imports: [
@@ -20,7 +23,10 @@ import { EffectsModule } from "@ngrx/effects";
     EffectsModule.forFeature([HistoryEffects]),
     MatSidenavModule,
     MatListModule,
+    MatCardModule,
+    MatButtonModule,
   ],
-  declarations: [HistoryComponent],
+  declarations: [HistoryComponent, ToStringPipe],
+  providers: [ToStringPipe],
 })
 export class HistoryModule {}

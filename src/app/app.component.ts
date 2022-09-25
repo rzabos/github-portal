@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Store } from "@ngrx/store";
 import { Subject, takeUntil } from "rxjs";
-import { selectError } from "./state";
+import { selectError, selectIsLoading } from "./state";
 
 @Component({
   selector: "app-root",
@@ -11,9 +11,11 @@ import { selectError } from "./state";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnDestroy {
+  public isLoading$ = this.store.select(selectIsLoading);
+
   private readonly _onDestroySubject = new Subject();
 
-  public constructor(snackBar: MatSnackBar, store: Store) {
+  public constructor(snackBar: MatSnackBar, private store: Store) {
     store
       .select(selectError)
       .pipe(takeUntil(this._onDestroySubject))

@@ -1,21 +1,43 @@
-<mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" opened>
+<mat-sidenav-container class="sidebar" *ngIf="(history$ | async)?.length; else elseBlock">
+  <mat-sidenav mode="side" opened class="scroll">
     <mat-selection-list #history [multiple]="false" (selectionChange)="onSelectionChange($event)">
       <mat-list-option *ngFor="let query of history$ | async" [value]="query">
-        <div class="col">
-          {{ query.text }}
+        <div mat-line>
+          <mat-icon>search</mat-icon>
+          Search <strong>{{ query.text }}</strong> in <strong>{{ query.in | toString }}</strong>
         </div>
-        <div class="col">
-          {{ query.in?.name ? "igen" : "nem" }}
+        <div mat-line>
+          <mat-icon>account_circle</mat-icon>
+          User <strong>{{ query.advanced?.username }}</strong>
         </div>
+        <div mat-line>
+          <mat-icon>account_balance</mat-icon>
+          Org <strong>{{ query.advanced?.organization }}</strong>
+        </div>
+        <mat-divider></mat-divider>
       </mat-list-option>
     </mat-selection-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <app-repository-list
+      *ngIf="response$ | async; else asd"
       [response]="response$ | async"
       [currentPage]="(currentPage$ | async) ?? 0"
       (paginate)="onPagination($event)">
-  </app-repository-list>
+    </app-repository-list>
+    <ng-template #asd>
+      <mat-card>
+        <h1>No query has been selected!</h1>
+        <h4>Select a query first.</h4>
+      </mat-card>
+    </ng-template>
   </mat-sidenav-content>
 </mat-sidenav-container>
+<ng-template #elseBlock>
+  <mat-card class="message">
+    <h1>No query has been made!</h1>
+    <h4>Navigate to the query page.</h4>
+    <a mat-raised-button color="primary" routerLink="query">Query Page</a>
+  </mat-card>
+</ng-template>
+

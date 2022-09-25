@@ -1,8 +1,24 @@
-.example-container {
+.sidebar {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   background: #eee;
+}
+
+.message {
+  background-color: rgb(218, 218, 218);
+  text-align: center;
+  display: inline-block;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+
+mat-sidenav-content {
+  overflow: scroll;
 }

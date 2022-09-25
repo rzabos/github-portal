@@ -11,6 +11,11 @@
       </div>
     </div>
   </mat-toolbar>
+  <mat-progress-bar
+    [ngClass]="{ invisible: (isLoading$ | async) === false }"
+    mode="indeterminate"
+    color="accent">
+  </mat-progress-bar>
   <div class="content">
     <router-outlet></router-outlet>
   </div>

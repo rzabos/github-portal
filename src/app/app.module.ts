@@ -14,6 +14,7 @@ import { CoreModule } from "./core/core.module";
 import { HttpClientModule } from "@angular/common/http";
 import { appReducer } from "./state/app.reducer";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatIconModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatProgressBarModule,
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       name: "GitHub Search App",

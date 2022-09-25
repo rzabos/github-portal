@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Query } from "../core/models";
-import { selectIsLoading } from "../state";
 import { selectCurrentPage, selectIsAdvanced, selectResponse } from "./state";
 import { QueryPageActions } from "./state/actions";
 
@@ -12,7 +11,6 @@ import { QueryPageActions } from "./state/actions";
 })
 export class QueryComponent {
   public isAdvancedQuery$ = this.store.select(selectIsAdvanced);
-  public isLoading$ = this.store.select(selectIsLoading);
   public response$ = this.store.select(selectResponse);
   public currentPage$ = this.store.select(selectCurrentPage);
 
