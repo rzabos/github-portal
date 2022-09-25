@@ -1,7 +1,12 @@
 <div class="row">
-  <mat-form-field class="col-4">
+  <mat-form-field class="col-4" appearance="fill">
     <mat-label>First value</mat-label>
-    <input type="text" matInput [formControl]="form.controls.value">
+    <input type="number" matInput [formControl]="form.controls.value" *ngIf="rangeType === rangeTypes.Number; else dateValue">
+    <ng-template #dateValue>
+      <input matInput readonly [matDatepicker]="datePicker" [formControl]="form.controls.value">
+      <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+      <mat-datepicker #datePicker></mat-datepicker>
+    </ng-template>
   </mat-form-field>
   <mat-form-field class="col-4">
     <mat-label>{{ label }}</mat-label>
@@ -14,8 +19,13 @@
       <mat-option value="..">Between</mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field class="col-4" *ngIf="displayOtherValue$ | async">
+  <mat-form-field class="col-4" *ngIf="displayOtherValue$ | async" appearance="fill">
     <mat-label>Other value</mat-label>
-    <input type="text" matInput [formControl]="form.controls.otherValue">
+    <input type="number" matInput [formControl]="form.controls.otherValue" *ngIf="rangeType === rangeTypes.Number; else dateOtherValue">
+    <ng-template #dateOtherValue>
+      <input matInput readonly [matDatepicker]="otherDatePicker" [formControl]="form.controls.otherValue">
+      <mat-datepicker-toggle matSuffix [for]="otherDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #otherDatePicker></mat-datepicker>
+    </ng-template>
   </mat-form-field>
 </div>

@@ -33,7 +33,7 @@ export class QueryFormComponent {
   }
 
   @Output() public submitQuery = new EventEmitter<Query>();
-  @Output() public resetResults = new EventEmitter();
+  @Output() public resetRepositories = new EventEmitter();
   @Output() public toggleAdvancedQuery = new EventEmitter();
 
   private _isAdvancedQeury = false;

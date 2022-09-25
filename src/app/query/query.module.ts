@@ -23,6 +23,7 @@ import { QueryFormComponent } from "./query-form/query-form.component";
 import { QueryComponent } from "./query.component";
 import { SharedModule } from "../shared/shared.module";
 import { QueryEffects } from "./state/query.effects";
+import { MatNativeDateModule } from "@angular/material/core";
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { QueryEffects } from "./state/query.effects";
     MatIconModule,
     MatRadioModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatButtonModule,
     MatSliderModule,
     MatSelectModule,

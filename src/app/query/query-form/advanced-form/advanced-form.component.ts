@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
-import { AdvancedForm, RangeForm } from "../../models";
+import { FormGroup } from "@angular/forms";
+import { AdvancedForm, RangeType } from "../../models";
+import { FormService } from "../../utils";
 
 @Component({
   selector: "app-advanced-form",
@@ -9,29 +10,10 @@ import { AdvancedForm, RangeForm } from "../../models";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdvancedFormComponent {
+  public rangeTypes = RangeType;
   @Input() public form: FormGroup<AdvancedForm>;
 
-  public constructor(formBuilder: FormBuilder) {
-    this.form = formBuilder.nonNullable.group<AdvancedForm>({
-      username: formBuilder.nonNullable.control<string>(""),
-      organization: formBuilder.nonNullable.control<string>(""),
-      languages: formBuilder.nonNullable.array<string>([]),
-      topics: formBuilder.nonNullable.array<string>([]),
-      stars: formBuilder.nonNullable.group<RangeForm>({
-        comparer: formBuilder.nonNullable.control("="),
-        value: formBuilder.nonNullable.control(""),
-        otherValue: formBuilder.control<string | null>(null),
-      }),
-      size: formBuilder.nonNullable.group<RangeForm>({
-        comparer: formBuilder.nonNullable.control("="),
-        value: formBuilder.nonNullable.control(""),
-        otherValue: formBuilder.control<string | null>(null),
-      }),
-      created: formBuilder.nonNullable.group<RangeForm>({
-        comparer: formBuilder.nonNullable.control("="),
-        value: formBuilder.nonNullable.control(""),
-        otherValue: formBuilder.control<string | null>(null),
-      }),
-    });
+  public constructor(formService: FormService) {
+    this.form = formService.initAdvancedForm();
   }
 }

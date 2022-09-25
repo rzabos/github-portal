@@ -35,6 +35,7 @@ export const queryReducer = createReducer<QueryState>(
     totalPage: 0,
     totalResults: 0,
     currentPage: 0,
+    response: null,
   })),
   on(QueryApiActions.loadRepositoriesSuccess, (state, action) => ({
     ...state,

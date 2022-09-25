@@ -3,7 +3,7 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-card>
       <div class="row align-items-center justify-content-center">
-        <mat-form-field class="col-4">
+        <mat-form-field class="col-4" appearance="fill">
           <mat-label>Search by</mat-label>
           <input type="text" matInput [formControl]="form.controls.text" [errorStateMatcher]="matcher">
           <mat-error *ngIf="form.controls.text.hasError('required')">
@@ -20,7 +20,7 @@
         </section>
         <div class="col-3 text-center">
           <button mat-raised-button color="primary">Submit</button>
-          <button type="button" mat-button (click)="resetResults.emit()">Reset</button>
+          <button type="button" mat-button (click)="resetRepositories.emit()">Reset</button>
         </div>
       </div>
       <div [hidden]="isAdvancedQuery === false">

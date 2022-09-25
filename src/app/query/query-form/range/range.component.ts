@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { map, Observable, of, tap } from "rxjs";
-import { RangeForm } from "../../models";
+import { RangeForm, RangeType } from "../../models";
 import { FormService } from "../../utils/form.service";
 
 @Component({
@@ -11,15 +11,15 @@ import { FormService } from "../../utils/form.service";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RangeComponent {
+  public rangeTypes = RangeType;
   public displayOtherValue$: Observable<boolean>;
 
-  @Input() public icon = "star";
+  @Input() public rangeType = RangeType.Number;
   @Input() public label = "Range";
   @Input() public set form(value: FormGroup<RangeForm>) {
     this.displayOtherValue$ = value.controls.comparer.valueChanges.pipe(
       map((c) => c === ".."),
       tap((isBetween) => {
-        console.log(isBetween);
         isBetween
           ? this._form.controls.otherValue.enable()
           : this._form.controls.otherValue.disable();

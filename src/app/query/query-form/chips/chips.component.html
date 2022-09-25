@@ -1,5 +1,5 @@
 <div class="row">
-  <mat-form-field class="col">
+  <mat-form-field class="col" appearance="fill">
     <mat-label>{{ label }}</mat-label>
     <mat-chip-list #languageList multiple>
       <mat-chip *ngFor="let chip of chips.controls; let i = index" (removed)="chips.removeAt(i)">

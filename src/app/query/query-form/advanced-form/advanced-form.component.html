@@ -1,12 +1,12 @@
 <div class="row">
-  <mat-form-field class="col">
+  <mat-form-field class="col" appearance="fill">
     <mat-label>Username</mat-label>
     <input type="text" matInput [formControl]="form.controls.username">
     <mat-error *ngIf="form.controls.username.hasError('minlength')">
       Text cannot be shorter than <strong>3</strong> characters!
     </mat-error>
   </mat-form-field>
-  <mat-form-field class="col">
+  <mat-form-field class="col" appearance="fill">
     <mat-label>Organization</mat-label>
     <input type="text" matInput [formControl]="form.controls.organization">
     <mat-error *ngIf="form.controls.organization.hasError('minlength')">
@@ -21,13 +21,13 @@
 </div>
 
 <div class="row">
-  <app-range label="Stars" [form]="form.controls.stars"></app-range>
+  <app-range label="Stars" [form]="form.controls.stars" [rangeType]="rangeTypes.Number"></app-range>
 </div>
 
 <div class="row">
-  <app-range label="Created" [form]="form.controls.created"></app-range>
+  <app-range label="Created" [form]="form.controls.created" [rangeType]="rangeTypes.Date"></app-range>
 </div>
 
 <div class="row">
-  <app-range label="Size" [form]="form.controls.size"></app-range>
+  <app-range label="Size" [form]="form.controls.size" [rangeType]="rangeTypes.Number"></app-range>
 </div>

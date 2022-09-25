@@ -1,3 +1,4 @@
+import { formatDate } from "@angular/common";
 import { Query, Range } from "../models";
 
 export const buildQuery = (query: Query): string => {
@@ -15,26 +16,51 @@ export const buildQuery = (query: Query): string => {
   if (query.advanced?.topics)
     query.advanced.topics.forEach((t) => queryString.push(`topic:${t}`));
 
-  addRangeForm(queryString, query.advanced?.size);
-  addRangeForm(queryString, query.advanced?.stars);
-  addRangeForm(queryString, query.advanced?.created);
+  addRangeForm(queryString, query.advanced?.size, "size");
+  addRangeForm(queryString, query.advanced?.stars, "stars");
+  addDate(queryString, query.advanced?.created);
 
   return queryString.join(" ");
 };
 
-export const addRangeForm = (
+const addRangeForm = (
   query: string[],
-  range: Range | undefined
+  range: Range | undefined,
+  name: string
 ): void => {
   if (!range?.value) {
     return;
   }
 
   if (range.otherValue) {
-    query.push(`stars:${range.value}${range.comparer}${range.otherValue}`);
+    query.push(`${name}:${range.value}${range.comparer}${range.otherValue}`);
 
     return;
   }
 
-  query.push(`stars:${range.comparer}${range.value}`);
+  query.push(`${name}:${range.comparer}${range.value}`);
+};
+
+const addDate = (query: string[], created: Range | undefined): void => {
+  if (!created?.value) {
+    return;
+  }
+
+  const value = formatCreatedDate(created.value);
+
+  if (created.otherValue) {
+    query.push(
+      `created:${value}${created.comparer}${formatCreatedDate(
+        created.otherValue
+      )}`
+    );
+
+    return;
+  }
+
+  query.push(`created:${created.comparer}${value}`);
+};
+
+const formatCreatedDate = (value: string): string => {
+  return formatDate(new Date(value), "YYYY-MM-dd", "en-GB");
 };

@@ -16,7 +16,7 @@ export class QueryComponent {
 
   public constructor(private store: Store) {}
 
-  public onResetResults(): void {
+  public onResetRepositories(): void {
     this.store.dispatch(QueryPageActions.resetRepositories());
   }
 

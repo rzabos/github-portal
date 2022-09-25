@@ -1,7 +1,7 @@
 <div>
   <app-query-form
     [isAdvancedQuery]="isAdvancedQuery$ | async"
-    (resetResults)="onResetResults()"
+    (resetRepositories)="onResetRepositories()"
     (submitQuery)="onSubmitQuery($event)"
     (toggleAdvancedQuery)="onToggleAdvancedQuery()">
   </app-query-form>
