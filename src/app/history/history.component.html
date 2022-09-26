@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidebar" *ngIf="(history$ | async)?.length; else elseBlock">
-  <mat-sidenav mode="side" class="scroll" position="end" autosize [opened]="sidebar$ | async">
+  <mat-sidenav mode="side" class="scroll" autosize opened>
     <mat-selection-list #history [multiple]="false" (selectionChange)="onSelectionChange($event)">
       <mat-list-option *ngFor="let query of (history$ | async); let i = index" [value]="query">
         {{ i + 1 }}. query
